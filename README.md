@@ -1,4 +1,7 @@
-# dm_project2016
+﻿# dm_project2016
 Eurovision data analysis
 
-Üks juustuburger, palun!
+* Mykhailo Dorokhov
+* Arne Lapõnin
+* Volodymyr Leno
+* Vladimir Visbek
