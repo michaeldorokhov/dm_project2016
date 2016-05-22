@@ -2,6 +2,10 @@ rm(list=ls())
 
 votes = read.csv("voting.csv", sep = ',', header = TRUE)
 
+nrow(votes)
+votes = votes[-which(votes$From == "Australia" | votes$From == "Serbia and Montenegro" | votes$To == "Australia" | votes$To == "Serbia and Montenegro"),]
+nrow(votes)
+
 data = aggregate(votes$Score, by = list(From = votes$From, To = votes$To), FUN = mean)
 str(data)
 
@@ -11,9 +15,10 @@ str(data)
 
 performers = unique(data$To) # 48 countries
 voters = unique(data$From) # 52 countries
+
 countries = intersect(voters,performers)
 
-countries_rel = data.frame("From" = c(), "To" = c(), "x" = c())
+#countries_rel = data.frame("From" = c(), "To" = c(), "x" = c())
 countries_rel_m = matrix(0, nrow=length(countries), ncol=length(countries), dimnames = list(countries,countries)) 
 
 for(i in 1:length(countries)){
@@ -32,22 +37,27 @@ for(i in 1:length(countries)){
     x2 = data[to_from_index,]$x
     
     # Matrix
-    countries_rel_m[fromCountry, toCountry] = (-1)*x1*x2
+    countries_rel_m[fromCountry, toCountry] = (-1)*(x1*x2)
     
     # Dataframe
-    countries_rel = rbind(countries_rel, data.frame("From" = fromCountry, "To" = toCountry, "x" = x1*x2))
+    #countries_rel = rbind(countries_rel, data.frame("From" = fromCountry, "To" = toCountry, "x" = x1*x2))
   }
 }
 
+min(countries_rel_m)
+
+
 # Try the dataframe out
-subset(countries_rel,From == "Estonia" & To == "Sweden")
+#subset(countries_rel,From == "Estonia" & To == "Sweden")
 
 # Dendrogramm
+hclust_result = hclust(as.dist(countries_rel_m), method = "complete", members = NULL)
 hclust_result = hclust(as.dist(countries_rel_m), method = "mcquitty", members = NULL)
-plot(hclust_result, labels = NULL, hang = 0.1, check = TRUE,
-     axes = TRUE, frame.plot = FALSE, ann = TRUE,
-     main = "Cluster Dendrogram")
+hclust_result = hclust(as.dist(countries_rel_m), method = "median", members = NULL)
+hclust_result = hclust(as.dist(countries_rel_m), method = "ward.D2", members = NULL)
+hclust_result = hclust(as.dist(countries_rel_m), method = "average", members = NULL)
 
-
+plot(hclust_result, hang = -1)
+plot(hclust_result, axes = FALSE)
 
 
