@@ -2,19 +2,13 @@ rm(list=ls())
 
 votes = read.csv("voting.csv", sep = ',', header = TRUE)
 
-nrow(votes)
 votes = votes[-which(votes$From == "Australia" | votes$From == "Serbia and Montenegro" | votes$To == "Australia" | votes$To == "Serbia and Montenegro"),]
-nrow(votes)
 
 data = aggregate(votes$Score, by = list(From = votes$From, To = votes$To), FUN = mean)
-str(data)
-
 data[,c(1,2)] = sapply(data[,c(1,2)], as.character)
 
-str(data)
-
-performers = unique(data$To) # 48 countries
-voters = unique(data$From) # 52 countries
+performers = unique(data$To) # 45 countries
+voters = unique(data$From) # 49 countries
 
 countries = intersect(voters,performers)
 
@@ -44,20 +38,11 @@ for(i in 1:length(countries)){
   }
 }
 
-min(countries_rel_m)
-
-
-# Try the dataframe out
-#subset(countries_rel,From == "Estonia" & To == "Sweden")
-
 # Dendrogramm
-hclust_result = hclust(as.dist(countries_rel_m), method = "complete", members = NULL)
+hclust_result = hclust(as.dist(countries_rel_m), method = "complete", members = NULL) # chosen
 hclust_result = hclust(as.dist(countries_rel_m), method = "mcquitty", members = NULL)
 hclust_result = hclust(as.dist(countries_rel_m), method = "median", members = NULL)
 hclust_result = hclust(as.dist(countries_rel_m), method = "ward.D2", members = NULL)
 hclust_result = hclust(as.dist(countries_rel_m), method = "average", members = NULL)
 
-plot(hclust_result, hang = -1)
 plot(hclust_result, axes = FALSE)
-
-
