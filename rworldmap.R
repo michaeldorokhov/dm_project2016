@@ -36,7 +36,7 @@ estonia1998_2002 = merge(estonia1998_2000, estonia2002, by = c("Year", "From", "
 estonia1998_2002 = aggregate(estonia1998_2002['Score'], by=estonia1998_2002['From'], mean)
 
 estonia1998_2002_map <- joinCountryData2Map(estonia1998_2002, joinCode="NAME", nameJoinColumn="From")
-mapCountryData(estonia1998_2002_map, nameColumnToPlot="Score", mapTitle="Voting for Estonia 1998-2002", mapRegion="Europe", catMethod='fixedWidth')
+mapCountryData(estonia1998_2002_map, nameColumnToPlot="Score", mapTitle="Voting for Estonia 1998-2002", mapRegion="Europe", catMethod=c(0,2,4,6,8,10,12))
 
 
 ### Estonia 2011-2015
@@ -46,13 +46,13 @@ estonia2011_2015 = merge(estonia2011_2013, estonia2015, by = c("Year", "From", "
 estonia2011_2015 = aggregate(estonia2011_2015['Score'], by=estonia2011_2015['From'], mean)
 
 estonia2011_2015_map <- joinCountryData2Map(estonia2011_2015, joinCode="NAME", nameJoinColumn="From")
-mapCountryData(estonia2011_2015_map, nameColumnToPlot="Score", mapTitle="Voting for Estonia 2011-2015", mapRegion="Europe", catMethod='fixedWidth')
+mapCountryData(estonia2011_2015_map, nameColumnToPlot="Score", mapTitle="Voting for Estonia 2011-2015", mapRegion="Europe", catMethod=c(0,2,4,6,8,10,12))
 
 
 ### Estonia 2001
 
 estonia2001_map <- joinCountryData2Map(estonia2001, joinCode="NAME", nameJoinColumn="From")
-mapCountryData(estonia2001_map, nameColumnToPlot="Score", mapTitle="Voting for Estonia 2001 (winning year)", mapRegion="Europe", catMethod='fixedWidth')
+mapCountryData(estonia2001_map, nameColumnToPlot="Score", mapTitle="Voting for Estonia 2001 (winning year)", mapRegion="Europe", catMethod=c(0,2,4,6,8,10,12))
 
 
 
