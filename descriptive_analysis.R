@@ -55,4 +55,44 @@ allGroups$Year = as.factor(allGroups$Year)
 ggplot(allGroups, aes(Year, Score)) + ggtitle("Baltic and Nordic countries giving points to Estonia") +   
   geom_bar(aes(fill = Group), position = "dodge", stat="identity")
 
+toSweden = subset(voting, From == "Estonia" & To == "Sweden" )
+toFinland = subset(voting, From == "Estonia" & To == "Finland" )
+toNorway = subset(voting, From == "Estonia" & To == "Norway" )
+toDenmark = subset(voting, From == "Estonia" & To == "Denmark" )
+toIceland = subset(voting, From == "Estonia" & To == "Iceland" )
+toNordic = rbind(toSweden,toFinland,toDenmark)
+
+toNordicVote = c()
+
+for(i in unique(subset(voting, From == "Estonia")$Year))
+{
+  toNordicVote = c(toNordicVote,mean(subset(toNordic, Year == i)$Score))
+}
+
+toNordic = data.frame("Year" = unique(subset(voting, From == "Estonia")$Year), "Score" = toNordicVote)
+
+toLatvia = subset(voting, From == "Estonia" & To == "Latvia" )
+toLithuania = subset(voting, From == "Estonia" & To == "Lithuania" )
+toBaltic = rbind(toLatvia,toLithuania)
+
+toBalticVote = c()
+
+for(i in unique(subset(voting, From == "Estonia")$Year))
+{
+  toBalticVote = c(toBalticVote,mean(subset(toBaltic, Year == i)$Score))
+}
+
+toBaltic = data.frame("Year" = unique(subset(voting, From == "Estonia")$Year), "Score" = toBalticVote)
+
+
+allToN = toNordic
+allToN$Group = "Nordic"
+allToB = toBaltic
+allToB$Group = "Baltic"
+
+allToGroups = rbind(allToN, allToB)
+allToGroups$Year = as.factor(allToGroups$Year)
+
+ggplot(allToGroups, aes(Year, Score)) + ggtitle("Estonia giving points to Baltic and Nordic countries") +   
+  geom_bar(aes(fill = Group), position = "dodge", stat="identity")
 
