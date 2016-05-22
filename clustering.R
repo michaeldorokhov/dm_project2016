@@ -32,7 +32,7 @@ for(i in 1:length(countries)){
     x2 = data[to_from_index,]$x
     
     # Matrix
-    countries_rel_m[fromCountry, toCountry] = x1*x2
+    countries_rel_m[fromCountry, toCountry] = (-1)*x1*x2
     
     # Dataframe
     countries_rel = rbind(countries_rel, data.frame("From" = fromCountry, "To" = toCountry, "x" = x1*x2))
@@ -41,3 +41,13 @@ for(i in 1:length(countries)){
 
 # Try the dataframe out
 subset(countries_rel,From == "Estonia" & To == "Sweden")
+
+# Dendrogramm
+hclust_result = hclust(as.dist(countries_rel_m), method = "mcquitty", members = NULL)
+plot(hclust_result, labels = NULL, hang = 0.1, check = TRUE,
+     axes = TRUE, frame.plot = FALSE, ann = TRUE,
+     main = "Cluster Dendrogram")
+
+
+
+
