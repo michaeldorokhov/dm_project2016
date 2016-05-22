@@ -57,4 +57,6 @@ mapCountryData(estonia2001_map, nameColumnToPlot="Score", mapTitle="Voting for E
 
 
 
+# Map prerequisites
 
+countries = read.csv("countries.csv", sep = ";", header = TRUE)
