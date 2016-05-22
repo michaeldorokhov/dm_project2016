@@ -43,3 +43,16 @@ lines(fromIceland$Year,fromIceland$Score, col = "blue4")
 
 plot(Nordic$Year, Nordic$Score, type = "l", col = "blue")
 lines(Baltic$Year, Baltic$Score, col = "red")
+
+allN = Nordic
+allN$Group = "Nordic"
+allB = Baltic
+allB$Group = "Baltic"
+
+allGroups = rbind(allN, allB)
+allGroups$Year = as.factor(allGroups$Year)
+
+ggplot(allGroups, aes(Year, Score)) + ggtitle("Baltic and Nordic countries giving points to Estonia") +   
+  geom_bar(aes(fill = Group), position = "dodge", stat="identity")
+
+
