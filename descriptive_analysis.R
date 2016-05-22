@@ -17,7 +17,7 @@ nordicVote = c()
 
 for(i in unique(subset(voting, To == "Estonia")$Year))
 {
-  nordicVote = c(nordicVote,mean(subset(Nordic, Year == i)$Score)))
+  nordicVote = c(nordicVote,mean(subset(Nordic, Year == i)$Score))
 }
 
 Nordic = data.frame("Year" = unique(subset(voting, To == "Estonia")$Year), "Score" = nordicVote)
