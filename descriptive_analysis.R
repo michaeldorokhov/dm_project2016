@@ -20,7 +20,14 @@ for(i in unique(subset(voting, To == "Estonia")$Year))
   nordicVote = c(nordicVote,mean(subset(Nordic, Year == i)$Score))
 }
 
+
 Nordic = data.frame("Year" = unique(subset(voting, To == "Estonia")$Year), "Score" = nordicVote)
+
+missingYearsFromNordic = data.frame(c(2004,2005,2006,2007,2008,2014,2016), c(0.0,0.0,0.0,0.0,0.0,0.0,0.0))
+colnames(missingYearsFromNordic) = c('Year', 'Score')
+Nordic = rbind(Nordic,missingYearsFromNordic)
+Nordic = Nordic[order(Nordic$Year),]
+
 
 fromLatvia = subset(voting, To == "Estonia" & From == "Latvia" )
 fromLithuania = subset(voting, To == "Estonia" & From == "Lithuania" )
@@ -34,6 +41,11 @@ for(i in unique(subset(voting, To == "Estonia")$Year))
 }
 
 Baltic = data.frame("Year" = unique(subset(voting, To == "Estonia")$Year), "Score" = balticVote)
+
+missingYearsFromBaltic = data.frame(c(2004,2005,2006,2007,2008,2014,2016), c(0.0,0.0,0.0,0.0,0.0,0.0,0.0))
+colnames(missingYearsFromBaltic) = c('Year', 'Score')
+Baltic = rbind(Baltic,missingYearsFromBaltic)
+Baltic = Baltic[order(Baltic$Year),]
 
 plot(fromSweden$Year,fromSweden$Score, type = "l", col = "yellow")
 lines(fromFinland$Year,fromFinland$Score, col = "", col = "blue2")
