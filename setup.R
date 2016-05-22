@@ -1,3 +1,5 @@
+rm(list=ls())
+
 # Voting data merging
 
 eurovision1998_2012 = read.csv("finals1998-2012.csv", sep = ',', header = TRUE)
