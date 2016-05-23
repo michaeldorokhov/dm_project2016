@@ -65,7 +65,7 @@ allB$Group = "Baltic"
 allGroups = rbind(allN, allB)
 allGroups$Year = as.factor(allGroups$Year)
 
-cbPalette <- c("#9E28B4", "#FFE734")
+cbPalette <- c("#FFE734", "#9E28B4")
 
 ggplot(allGroups, aes(Year, Score)) + ggtitle("Baltic and Nordic countries giving points to Estonia") +   
   geom_bar(aes(fill = Group), position = "dodge", stat="identity") + scale_fill_manual(values=cbPalette)
@@ -108,7 +108,7 @@ allToB$Group = "Baltic"
 allToGroups = rbind(allToN, allToB)
 allToGroups$Year = as.factor(allToGroups$Year)
 
-cbPalette <- c("#9E28B4", "#FFE734")
+cbPalette <- c("#FFE734", "#9E28B4")
 
 ggplot(allToGroups, aes(Year, Score)) + ggtitle("Estonia giving points to Baltic and Nordic countries") +   
   geom_bar(aes(fill = Group), position = "dodge", stat="identity") + scale_fill_manual(values=cbPalette)
