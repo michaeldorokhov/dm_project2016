@@ -1,4 +1,5 @@
 rm(list=ls())
+library(ggplot2)
 
 voting = read.csv("voting.csv", sep = ',', header = TRUE)
 # results = read.csv("results.csv", sep = ',', header = TRUE)
@@ -64,8 +65,10 @@ allB$Group = "Baltic"
 allGroups = rbind(allN, allB)
 allGroups$Year = as.factor(allGroups$Year)
 
+cbPalette <- c("#9E28B4", "#FFE734")
+
 ggplot(allGroups, aes(Year, Score)) + ggtitle("Baltic and Nordic countries giving points to Estonia") +   
-  geom_bar(aes(fill = Group), position = "dodge", stat="identity")
+  geom_bar(aes(fill = Group), position = "dodge", stat="identity") + scale_fill_manual(values=cbPalette)
 
 toSweden = subset(voting, From == "Estonia" & To == "Sweden" )
 toFinland = subset(voting, From == "Estonia" & To == "Finland" )
@@ -105,6 +108,8 @@ allToB$Group = "Baltic"
 allToGroups = rbind(allToN, allToB)
 allToGroups$Year = as.factor(allToGroups$Year)
 
+cbPalette <- c("#9E28B4", "#FFE734")
+
 ggplot(allToGroups, aes(Year, Score)) + ggtitle("Estonia giving points to Baltic and Nordic countries") +   
-  geom_bar(aes(fill = Group), position = "dodge", stat="identity")
+  geom_bar(aes(fill = Group), position = "dodge", stat="identity") + scale_fill_manual(values=cbPalette)
 
