@@ -68,7 +68,7 @@ allGroups$Year = as.factor(allGroups$Year)
 cbPalette <- c("#FFE734", "#9E28B4")
 
 ggplot(allGroups, aes(Year, Score)) + ggtitle("Baltic and Nordic countries giving points to Estonia") +   
-  geom_bar(aes(fill = Group), position = "dodge", stat="identity") + scale_fill_manual(values=cbPalette)
+  geom_bar(aes(fill = Group), position = "dodge", stat="identity") + scale_fill_manual(values=cbPalette) + theme(axis.text = element_text(size = 30, colour="black"), axis.text.x = element_text(angle=90, vjust=1))
 
 toSweden = subset(voting, From == "Estonia" & To == "Sweden" )
 toFinland = subset(voting, From == "Estonia" & To == "Finland" )
@@ -111,5 +111,5 @@ allToGroups$Year = as.factor(allToGroups$Year)
 cbPalette <- c("#FFE734", "#9E28B4")
 
 ggplot(allToGroups, aes(Year, Score)) + ggtitle("Estonia giving points to Baltic and Nordic countries") +   
-  geom_bar(aes(fill = Group), position = "dodge", stat="identity") + scale_fill_manual(values=cbPalette)
+  geom_bar(aes(fill = Group), position = "dodge", stat="identity") + scale_fill_manual(values=cbPalette) + theme(axis.text = element_text(size = 30, colour="black"), axis.text.x = element_text(angle=90, vjust=1))
 
