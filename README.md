@@ -13,6 +13,9 @@ Final project for the **MTAT.03.183 Data Mining** course
 
 We used *descriptive analysis*, *data visualisation* on a map and *complete-link hierarchical clustering* that produced a dendrogram with countries clusters. The same code could be modified so you can achieve the same results for your country!
 
+### Results
+
+Check out the [poster](poster/Project_Poster.pdf) and the [leaflet](poster/Project_Leaflet.pdf) of the project.
 
 ### Team
 Students of [Software Engineering Master Program](http://software.cs.ut.ee/)
@@ -21,3 +24,7 @@ Students of [Software Engineering Master Program](http://software.cs.ut.ee/)
 * Volodymyr Leno
 * Vladimir Visbek
 
+Appendix: photo from the course poster session
+-
+![alt text](images/Poster_Session.jpg)
+Photo is taken by [prof. Jaak Vilo](http://biit.cs.ut.ee/~vilo)
