@@ -27,4 +27,5 @@ Students of [Software Engineering Master Program](http://software.cs.ut.ee/)
 Appendix: photo from the course poster session
 -
 ![alt text](images/Poster_Session.jpg)
+
 Photo is taken by [prof. Jaak Vilo](http://biit.cs.ut.ee/~vilo)
