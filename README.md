@@ -15,7 +15,7 @@ We used *descriptive analysis*, *data visualisation* on a map and *complete-link
 
 ### Results
 
-Check out the [poster](poster/Project_Poster.pdf) and the [leaflet](poster/Project_Leaflet.pdf) of the project.
+Check out the [poster](img/Project_Poster.png) and the [leaflet](img/Project_Leaflet.png) of the project.
 
 ### Team
 Students of [Software Engineering Master Program](http://software.cs.ut.ee/)
@@ -26,6 +26,6 @@ Students of [Software Engineering Master Program](http://software.cs.ut.ee/)
 
 Appendix: photo from the course poster session
 -
-![alt text](images/Poster_Session.jpg)
+![alt text](img/Poster_Session.jpg)
 
 Photo is taken by [prof. Jaak Vilo](http://biit.cs.ut.ee/~vilo)
